@@ -4,5 +4,9 @@
     "nodemon": "^2.0.19",
     "sequelize": "^6.21.3",
     "sqlite3": "^5.0.11"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./app.js"
   }
 }
