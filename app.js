@@ -93,6 +93,19 @@ app.put('/shows/:id', async (req,res) => {
     res.send(shows)
 })
 
+//  only update show status
+// using patch for small key updates rather than whole object
+app.patch('/shows-status/:id/:status', async (req,res) => {
+    // make sure status is a boolean
+    const statusBool = (req.params.status === 'true');
+    const show = await Show.update(
+        {status: statusBool},
+        {where: {id: req.params.id}}
+        )
+    const shows = await Show.findAll();
+    res.send(shows)
+})
+
 //  delete a show
 app.delete('/shows/:id', async (req,res) => {
     const deletedShow = await Show.destroy(
